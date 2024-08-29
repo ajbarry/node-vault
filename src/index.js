@@ -269,9 +269,9 @@ module.exports = (config = {}) => {
                             code,
                             client_nonce,
                         })
-                            .then((cb) => {
-                                console.log('OIDC callback successful', JSON.stringify(cb.auth, null, 2))
-                                server.close(done);
+                            .then((oidc) => {
+                                server.close();
+                                done(oidc)
                             })
                             .catch(reject)
                     }
